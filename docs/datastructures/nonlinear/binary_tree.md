@@ -1,0 +1,3 @@
+# Binary Tree
+
+A **Binary Tree** is ...
