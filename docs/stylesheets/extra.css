@@ -1,0 +1,101 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Roboto Slab";
+    /* font-weight: normal; */
+    color: #444444!important;
+}
+
+h1 {
+    font-weight: 900 !important;
+    text-align: center;
+    color: #a12828 !important;
+    border-bottom: 1px solid;
+    margin-bottom: 15px !important;
+}
+
+h2 {
+    border-bottom: 0.9px solid #cccccca1;
+    color: #a12828 !important;
+}
+
+h3 {
+    color: #a12828 !important;
+}
+
+.md-typeset h2, h3, h4 {
+    font-weight: 900 !important;
+    margin-top: 15px !important;
+    margin-bottom: 3px !important;
+}
+
+.md-typeset {
+    font-size: 0.75rem !important;
+}
+
+p {
+    margin-top: 5px !important;
+    margin-bottom: 10px !important;
+}
+
+/* Inline code */
+/* NOTE: Inline and block code seem to share the font-size. I can't get it to
+control individually */
+.md-typeset p > code {
+    /* color: #a12828; */
+    border: 1px solid #dee2e6;
+    font-size: inherit;
+}
+
+/* Code blocks */
+.highlight {
+    background-color: hsla(0, 0%, 96%, 1) !important;
+}
+
+
+.md-typeset .admonition {
+    font-size: 0.9em;
+}
+
+.md-typeset div.arithmatex {
+    overflow: hidden;
+    padding: 0;
+}
+
+.md-typeset th {
+    font-size: 1.1em !important;
+    font-weight: bold !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+svg {
+    border-radius: 2px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.md-typeset li::marker {
+    color: #2727276c;
+}
+
+figure {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 10px 10px 0 10px;
+    margin-bottom: 12px !important;
+    font-size: 0.9em;
+}
+
+.mermaid {
+    text-align: center;
+}
+
+
+:root {
+    --md-primary-fg-color: #a12828;
+    --md-primary-fg-color--light: #a12828;
+    --md-primary-fg-color--dark: #a12828;
+}

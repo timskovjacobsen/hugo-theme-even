@@ -1,0 +1,85 @@
+site_name: Notes
+
+nav:
+  - Home: -index.md
+  - Number Systems:
+      - Decimal: numbersystems/decimal.md
+      - Binary: numbersystems/binary.md
+  - Types:
+      - Int: int.md
+      - Char: char.md
+      - Float: float.md
+      - Double: double.md 
+  - Data Structures:
+      - Overview: datastructures/overview.md
+      - Linear Data Structures: datastructures/linear/datastructures_linear.md
+      - Linear ADTs: datastructures/linear/ADTs_linear.md
+      - Nonlinear ADTs:
+        - Binary Search Tree: datastructures/nonlinear/binary_search_tree.md
+        - Binary Heap: datastructures/nonlinear/binary_heap.md
+        - Skip List: datastructures/nonlinear/skiplist.md
+        - Hash Map: datastructures/nonlinear/hashmap.md
+  - Algorithms:
+      - Big O: algorithms/bigO.md
+      - Recursion: algorithms/recursion.md
+  - DevOps:
+      - Jenkins: devops/jenkins.md
+  - Linux:
+      - Bash: linux/bash.md
+  - Python:
+      - Python: languages/python/python.md
+  - Git:
+      - General: git.md
+      - Git Recipes: git_recipes.md
+      - Git-LFS: git_lfs.md
+  - Web:
+      - General: web/general.md
+      - HTML: web/html.md
+      - CSS: web/css.md
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+  palette:
+    # primary: purple
+    accent: indigo
+  font:
+    text: Nunito
+    # code: Cascadia Code PL
+    # text: Palatino Linotype
+    code: Ubuntu Mono
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - attr_list
+  - footnotes
+  - pymdownx.highlight:
+      use_pygments: true
+  - pymdownx.inlinehilite
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.arithmatex:
+      generic: true
+  - admonition
+  - footnotes
+  - toc:
+      permalink: True
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.snippets
+  - pymdownx.tabbed
+  - meta
+
+extra_javascript:
+  - javascripts/config.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - https://unpkg.com/mermaid/dist/mermaid.min.js
+
+plugins:
+  - search
