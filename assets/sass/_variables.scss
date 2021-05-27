@@ -55,7 +55,7 @@ $global-container-padding: 0 20px !default;
 $global-lineheight: 1.5 !default;
 
 // Font family of the site.
-$global-font-family: 'Merriweather', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif !default;
+$global-font-family: 'Merriweather Sans', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif !default;
 
 // Serif font family of the site.
 $global-serif-font-family: 'Raleway', Athelas, STHeiti, Microsoft Yahei, serif !default;
@@ -65,11 +65,11 @@ $global-background: $white !default;
 
 // Headings font size of the site.
 $global-headings: (
-  h1: 22px,
-  h2: 20px,
-  h3: 18px,
-  h4: 16px,
-  h5: 16px,
+  h1: 28px,
+  h2: 24px,
+  h3: 22px,
+  h4: 20px,
+  h5: 18px,
   h6: 16px
 ) !default;
 
@@ -121,7 +121,7 @@ $post-padding: 1.5em 0 !default;
 $post-border: 1px solid $light-gray !default;
 
 // Font size of post title.
-$post-title-font-size: 22px !default;
+$post-title-font-size: 28px !default;
 
 // Font weight of post title.
 $post-title-font-weight: 600 !default;
