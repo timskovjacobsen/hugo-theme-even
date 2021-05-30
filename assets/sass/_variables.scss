@@ -55,21 +55,22 @@ $global-container-padding: 0 20px !default;
 $global-lineheight: 1.5 !default;
 
 // Font family of the site.
-$global-font-family: 'Merriweather Sans', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif !default;
+// $global-font-family: 'Merriweather Sans', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif !default;
+$global-font-family: 'Fira Sans', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif !default;
 
 // Serif font family of the site.
-$global-serif-font-family: 'Raleway', Athelas, STHeiti, Microsoft Yahei, serif !default;
+$global-serif-font-family: 'Crimson Text', Athelas, STHeiti, Microsoft Yahei, serif !default;
 
 // Background color of the site.
 $global-background: $white !default;
 
 // Headings font size of the site.
 $global-headings: (
-  h1: 28px,
-  h2: 24px,
-  h3: 22px,
-  h4: 20px,
-  h5: 18px,
+  h1: 36px,
+  h2: 32px,
+  h3: 28px,
+  h4: 24px,
+  h5: 20px,
   h6: 16px
 ) !default;
 
@@ -105,7 +106,7 @@ $menu-item-margin-left: 10px !default;
 $menu-item-mobile-margin: 5px !default;
 
 // Font size of menu item link.
-$menu-link-font-size: 14px !default;
+$menu-link-font-size: 16px !default;
 
 // Height of the mobile header.
 $mobile-navbar-height: 50px !default;
@@ -121,7 +122,7 @@ $post-padding: 1.5em 0 !default;
 $post-border: 1px solid $light-gray !default;
 
 // Font size of post title.
-$post-title-font-size: 28px !default;
+$post-title-font-size: 36px !default;
 
 // Font weight of post title.
 $post-title-font-weight: 600 !default;
