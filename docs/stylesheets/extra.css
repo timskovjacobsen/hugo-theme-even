@@ -20,12 +20,13 @@ h1 {
 
 h2 {
     border-bottom: 0.9px solid #cccccca1;
-    color: #a12828 !important;
+    /* margin-bottom: 10px; */
+    /* color: #a12828 !important; */
 }
 
-h3 {
-    color: #a12828 !important;
-}
+/* h3 { */
+    /* color: #a12828 !important; */
+/* } */
 
 .md-typeset h2, h3, h4 {
     font-weight: 900 !important;
@@ -35,20 +36,27 @@ h3 {
 
 .md-typeset {
     font-size: 0.75rem !important;
+    /* font-weight: 300 !important; */
 }
 
-p {
-    margin-top: 5px !important;
-    margin-bottom: 10px !important;
-}
+/* p { */
+    /* margin-top: 10px;
+    margin-bottom: 10px; */
+/* } */
 
 /* Inline code */
 /* NOTE: Inline and block code seem to share the font-size. I can't get it to
 control individually */
-.md-typeset p > code {
+.md-typeset p > code,
+th > code,
+tr > code,
+td > code,
+ul > code,
+li > code {
     /* color: #a12828; */
     border: 1px solid #dee2e6;
-    font-size: inherit;
+    font-size: 11px;
+    color: #E74C3C !important;
 }
 
 /* Code blocks */
@@ -73,7 +81,7 @@ control individually */
     padding-bottom: 5px !important;
 }
 
-svg {
+svg, img {
     border-radius: 2px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
@@ -93,6 +101,12 @@ figure {
     text-align: center;
 }
 
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
 
 :root {
     --md-primary-fg-color: #a12828;

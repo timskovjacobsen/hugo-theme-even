@@ -1,5 +1,7 @@
 # Binary Heap
 
+## Introduction
+
 Binary Heaps are a subset of Binary Trees (but not Binary Search Trees). Binary Heaps have the same 0, 1 or 2 children characteristic as Binary Trees.
 
 The most notable characteristic of a Heap is that its shape must always be [**Complete**](binary_search_tree.md#properties), a binary heap is a complete binary tree. The completeness property implies that an Array is good backing data structure for implementing a Heap.

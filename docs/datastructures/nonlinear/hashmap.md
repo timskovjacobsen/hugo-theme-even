@@ -1,5 +1,7 @@
 # Hash Maps
 
+## Introduction
+
 **Hash Maps** are look-up data structures with average $O(1)$ access time, arguably making it the most important data structure. **Hash Maps** can also be referred to as a **Hash Table**.
 
 Hash Maps are backed by Arrays, where empty spots are kept as `null`.
@@ -111,7 +113,7 @@ We generally have two types of collision handling strategies, **Closed Addressin
 
 ## Closed Addressing
 
-TODO: ADDING DIAGRAMS IS A MUST
+TODO: A DIAGRAM WOULD BE GOOD HERE.
 
 When using a **Closed Addressing** collision handling strategy, an entry is sure to be located in the HashMap at the compressed index that was actually computed. Thus, even though we have a collision, we will still store the entry at that index.
 

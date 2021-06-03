@@ -1,5 +1,7 @@
 # Binary Search Tree
 
+## Introduction
+
 A **Binary Search Tree (BST)** is similar to a Binary Tree, except that data is arranged in a order so searching takes $O(\log n)$ time. This means that for a given node $p$, the left child and all its ancestors all contain values that are lower than the one stores in $p$. Meanwhile, the right child and all its ancestors have values that are larger than the one in $p$.
 
 For a Binary Search Tree
@@ -50,7 +52,7 @@ $$
     ```java
     // Height of a general tree with children iterator
     public int height(Node<T> root) {
-        int h 0;
+        int h = 0;
         for (Node<T> child: children(root)) {
             h = Math.max(h, height(child) + 1));
         }
@@ -60,7 +62,7 @@ $$
 
     Calculating the height of a tree is an $O(n)$ time complexity operation.
 
-A BST also has *shape* properties. A BST is considered a
+A BST also has *shape* properties.
 
 !!! note "Full Tree"
     In a **Full Tree**, all nodes that are not leaves have *exactly* $2$ children. In other words, all nodes must have exactly $0$ or $2$ children.
@@ -406,25 +408,42 @@ It makes heavy use of pointer reinforcement.
 
 Removal from a BST has four cases to consider:
 
-1. **Removing a node with two children**  
-    aaa
-
-2. **Removing a node with only a left child**  
-    bbb
-
-3. **Removing a node with only a right child**  
-    bbb
-
-4. **Removing a node with no children**  
+1. **Removing a node with no children**  
     Leaf node
+
+2. **Removing a node one child**  
+    bbb
+
+3. **Removing a node with two children**  
+    Predecessor/successor.
 
 The [csvistool](https://csvistool.com) is a great way to visualize the removal method in various scenarios.
 
+### Finding the predecessor/successor
+
+Finding the predecessor of a two-child node when having that node as the current node is done like this:
+
+1. Move to the *left* child
+2. Traverse *right* until reaching a right child that is `null`
+3. When the right child is `null`, the predecessor has been found
+
+Finding the successor is like this, which is very similar:
+
+1. Move to the *right* child
+2. Traverse to the *left* until reaching a left child that is `null`
+3. When the left child is `null`, the successor has been found
+
+??? example
+
+    The image below shows a BST after removal with the predecessor and successor strategy, respectively.
+
+    ![remove w/ predecessor or successor](/datastructures/media/removal-predecessor-successor.png)
+
 ## BST Implementation
 
-Implementation of a BST with the successor strategy for removal is presented in the box below.
+??? example "BST implementation"
 
-??? example "Implementation"
+    Implementation of a BST with the *successor* strategy for removal is presented below.
 
     === "Java - BST"
         ```java linenums="1"
@@ -439,3 +458,32 @@ Implementation of a BST with the successor strategy for removal is presented in 
         docs/datastructures/nonlinear/code/java/BSTNode.java
         --8<--
         ```
+
+??? example "Removal with predecessor"
+
+    The full implementation of a BST shown in the example above uses the *successor* for replacing the removed data.
+
+    The implementation could easily be modified to use the *predecessor* instead. The method below can be used to remove the predecessor.
+
+    === "Java - BSTNode"
+        ```java linenums="1"
+        private BSTNode<T> removePredecessor(BSTNode<T> current, BSTNode<T> dummy) {
+            if (current.getRight() == null) {
+                // Base case:
+                // The predecessor has been found
+
+                // Copy the data of the current node into the dummy node so it is retained
+                dummy.setData(current.getData());
+
+                return current.getLeft();
+
+            } else {
+
+                current.setRight(removePredecessor(current.getRight(), dummy));
+            }
+            return current;
+        }
+        ```
+
+
+**TODO:** Include code for explaining removal with the predecessor. It was a coding question for the exam.
