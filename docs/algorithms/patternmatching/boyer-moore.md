@@ -8,7 +8,7 @@ The Boyer-Moore algorithm preprocesses the pattern to generate a so-called **las
 * Movements in the pattern is **right-to-left**
 
 * In case of a mismatch, checks whether the current character exists in the last-occurrence-table
-  * If it exists, a shift is made to align that character correctly with the patter
+  * If it exists, a shift is made to move the pattern forward. The shift aligns the mismatched character in the pattern the matching character in the text
   * If is does not exist, a shift is made to move the entire pattern past the character that did not exist
 
 * After a match, we perform a naive shift by $1$. Of course this is provided that we are not only looking for the first occurrence.
@@ -20,15 +20,28 @@ The Boyer-Moore algorithm preprocesses the pattern to generate a so-called **las
 
 The last occurrence table is produced by preprocessing the pattern. The table forms a map with keys of each of the characters present in the pattern and values with the index in which the key last occurs in the pattern.
 
-!!! example "Last occurrence table"
+!!! example "Example 1: happy"
+    Pattern: $happy$
+
+    | Character | Index |
+    | :-------: | :---: |
+    |    $h$    |  $0$   |
+    |    $a$    |  $1$   |
+    |    $p$    |  $3$   |
+    |    $y$    |  $4$   |
+    |    $*$    |  $-1$   |
+
+    $*=-1$ since it does not occur in the pattern
+
+!!! example "Example 2: Last occurrence table"
     Pattern: $aaababacacab$
 
     | Character | Index |
     | :-------: | :---: |
-    |    $a$    |  10   |
-    |    $b$    |  11   |
-    |    $c$    |   9   |
-    |    $d$    |  -1   |
+    |    $a$    |  $10$   |
+    |    $b$    |  $11$   |
+    |    $c$    |   $9$   |
+    |    $d$    |  $-1$   |
 
     $d=-1$ since it does not occur in the pattern
 
