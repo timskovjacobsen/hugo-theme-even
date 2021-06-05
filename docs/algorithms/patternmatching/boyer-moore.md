@@ -86,3 +86,13 @@ The worst case time complexity is $O(nm)$. If there is a mismatch at the first c
     The number of comparisons made is
     $$ n_{\text{comparisons}} = n - m + m = n $$
     $$ n_{\text{comparisons}} = 41 $$
+
+## Implementation
+
+!!! example "Boyer-Moore implementation"
+    === "Java"
+        ```java linenums="1"
+        --8<--
+        docs/algorithms/sorting/iterative_sorts/code/java/BubbleSort.java
+        --8<--
+        ```
