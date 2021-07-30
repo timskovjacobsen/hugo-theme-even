@@ -92,3 +92,6 @@ _build
 # Dummy test files for sandboxing
 sandbox/
 sandbox.py
+
+# Java
+*.class

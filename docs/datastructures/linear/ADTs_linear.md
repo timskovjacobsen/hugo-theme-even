@@ -235,10 +235,6 @@ When implementing a Queue with an Array, the we could as well have enqueued at t
 
 * Printer jobs
 
-## Priority Queue
-
-TODO: Not a linear data structure. Treat in other section.
-
 ## Deque
 
 **Deque** is short for *Double Ended Queue*. This Abstract Data Type which can be efficiently implemented by

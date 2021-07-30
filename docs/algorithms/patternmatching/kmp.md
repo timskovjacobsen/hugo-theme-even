@@ -1,5 +1,7 @@
 # Knuth-Morris-Pratt (KMP)
 
+## Introduction
+
 * Failure table
 
 Most notably, the KMP algorithm is smart enough to not compare characters that have already been identified as a match. Even after shifting the pattern, this efficiency is maintained.
@@ -29,12 +31,42 @@ Based on the above, it can be concluded that the time complexity of generating t
 
     Failure table:
 
-    | $i$ :   | $0$ | $1$ | $2$ | $3$ | $4$ | $5$ | $6$ |
-    | :-:     | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-    | $p[i]$: | $a$ | $b$ | $a$ | $d$ | $a$ | $b$ | $k$ |
-    | $f[i]$: | $0$ | $0$ | $1$ | $0$ | $1$ | $2$ | $0$ |
+    <center style="box-sizing: border-box">
+
+    |  $i$ :  |  $0$  |  $1$  |  $2$  |  $3$  |  $4$  |  $5$  |  $6$  |
+    | :-----: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+    | $p[i]$: |  $a$  |  $b$  |  $a$  |  $d$  |  $a$  |  $b$  |  $k$  |
+    | $f[i]$: |  $0$  |  $0$  |  $1$  |  $0$  |  $1$  |  $2$  |  $0$  |
+
+    </center>
 
 The count becomes $1$ at index $4$ because the prefix and suffix $a$ are equal. At index $5$, both the prefix and the suffix of $p[0:i]$ are equal to $ab$. Thus, we report a length of $2$.
+
+The worst case comparison count for the failure table is $2m$ comparisons.
+
+## Implementation
+
+!!! example "Failure table implementation"
+
+    ```python
+    def compute_failure_table(pattern: str) -> list:
+        m = len(pattern)
+        failure_table = [0 for _ in range(m)]
+        i, j = 0, 1
+
+        while j < m:
+            if pattern[i] == pattern[j]:
+                failure_table[j] = i + 1
+                i += 1
+                j += 1
+            else if pattern[i] != pattern[j] and i == 0:t
+                failure_table[j] = 0
+                j += 1
+            else:
+                i = failure_table[i - 1]
+        
+        return failure_table
+    ```
 
 ## Algorithm
 
@@ -51,18 +83,18 @@ The algorithm considers three cases
 3. The character in the text and the pattern mismatched.
 This is where the cleverness of the KMP algorithm shows. **TODO**.
 
+The worst case comparison count for the KMP algorithm is $2n$ comparisons.
+
 !!! example "Pseudocode"
 
     ```python
-    def kmp(text: str, pattern: str) -> bool:
+    def kmp_search(text: str, pattern: str) -> bool:
         """KMP algorithm for checking if a pattern occurs in a text."""
-
+        n = len(text)
         failure_table = compute_failure_table(text, pattern)
 
         # Indices for text and pattern
         i, j = 0, 0
-
-        n = text.length
 
         while i < n:
 
@@ -89,7 +121,7 @@ This is where the cleverness of the KMP algorithm shows. **TODO**.
                 # We are can perform a clever shift
                 # Shift the pattern so the prefix of the pattern aligns with a suffix
                 # of the text that was a match
-                j = failure_table[j - 1]       
+                j = failure_table[j - 1]
 
         # If we reach this part, there was no match
         return False
@@ -101,11 +133,11 @@ This is where the cleverness of the KMP algorithm shows. **TODO**.
 The table below shows the time complexity for the KMP algorithm.
 <center>
 
-| Occurrences | Best case | Worst case |
-| - | - | - |
-| None   | $O(m + n)$ | $O(m + n)$ |
-| Single | $O(m)$ | $O(m + n)$ |
-| All   | $O(m + n)$ | $O(m + n) |
+| Occurrences | Best case  | Worst case |
+| ----------- | ---------- | ---------- |
+| None        | $O(m + n)$ | $O(m + n)$ |
+| Single      | $O(m)$     | $O(m + n)$ |
+| All         | $O(m + n)$ | $O(m + n)  |
 
 </center>
 
@@ -114,6 +146,9 @@ The table below shows the time complexity for the KMP algorithm.
     * $O(n)$ for traversing each character (at least) once
 
 Thus, the KMP algorithm is linear in the worst case and therefore more efficient than the Boyer-Moore algorithm.
+
+The space complexity of the KMP algorithm is $O(m)$, which amounts to storing the failure table.
+We ignore the text and pattern strings when talking space complexity because they are only inputs and not something the algorithm produces.
 
 ## Examples
 
@@ -124,6 +159,7 @@ Thus, the KMP algorithm is linear in the worst case and therefore more efficient
     ![kmp example from vistool](/algorithms/media/kmp_example.png)
 
     The algorithm terminates after $22$ comparisons (green and red cells).
+
 ## References
 
 * [Data Structures & Algorithms IV: Pattern Matching, Dijkstra's, MST, and Dynamic Programming Algorithms](https://www.edx.org/course/data-structures-algorithms-iv-pattern-matching-djikstras-mst-and-dynamic-programming-algorithms)

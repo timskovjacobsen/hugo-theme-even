@@ -7,7 +7,6 @@ h3,
 h4 {
     font-family: "Roboto Slab";
     /* font-weight: normal; */
-    color: #444444!important;
 }
 
 h1 {
@@ -57,6 +56,11 @@ li > code {
     border: 1px solid #dee2e6;
     font-size: 11px;
     color: #E74C3C !important;
+}
+
+th {
+    /* So tables fit on page width, was way too large before */
+    min-width: 3em !important;
 }
 
 /* Code blocks */

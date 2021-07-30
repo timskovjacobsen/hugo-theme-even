@@ -1,29 +1,19 @@
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Your implementations of the Boyer Moore string searching algorithm.
- */
 public class BoyerMoore {
     /**
      * Boyer Moore algorithm that relies on a last occurrence table. This algorithm
-     * Works better with large alphabets.
+     * works when many characters in the alphabet are not in the pattern.
      *
-     * Make sure to implement the buildLastTable() method, which will be used in
-     * this boyerMoore() method.
-     *
-     * Note: You may find the getOrDefault() method from Java's Map class useful.
-     *
-     * You may assume that the passed in pattern, text, and comparator will not be
+     * It is assumed that the passed in pattern, text, and comparator will not be
      * null.
      *
-     * @param pattern    The pattern you are searching for in a body of text.
-     * @param text       The body of text where you search for the pattern.
-     * @param comparator You MUST use this to check if characters are equal.
+     * @param pattern    The pattern we are searching for in a body of text.
+     * @param text       The body of text where we search for the pattern.
+     * @param comparator Character comparator uses to check if characters are equal.
      * @return List containing the starting index for each match found.
      */
     public static List<Integer> boyerMoore(CharSequence pattern, CharSequence text, CharacterComparator comparator) {
@@ -59,7 +49,8 @@ public class BoyerMoore {
                 // match
                 matches.add(i);
 
-                // After the match, shift the pattern one spot and continue searching
+                // After the full match, shift the pattern naively by 1 and continue 
+                // searching. Note that we allow overlapping matches with this.
                 i++;
             } else {
                 // There was a mismatch between the text character and the pattern
@@ -68,14 +59,18 @@ public class BoyerMoore {
                 int shift = lastOccurrenceTable.getOrDefault(text.charAt(i + j), -1);
 
                 if (shift < j) {
-                    // Shift the pattern so the characters align
-                    // NOTE: If the character is does not exist in the last occurrence
-                    // table, the value of shift=-1 will move the pattern all the way
+                    // Shift the pattern to align the mismatched text character
+                    // with the character in the pattern found in the last occurrence
+                    // table align. 
+                    // If the character does not exist in the last occurrence
+                    // table, then shift=-1. This will move the pattern all the way
                     // past the text character that was just mismatched
                     i = i + j - shift;
                 } else {
-                    // This happens if the character did exists in the table,
-                    // but the shift is backwards, which doesn't make sense.
+                    // This can happen in two cases: 
+                    // - the character is not in the last occurrence table (shift = -1) 
+                    // - if the character did exist in the table, but the shift is 
+                    // backwards, which doesn't make sense.
                     // So instead, we shift one forward
                     i++;
                 }
@@ -88,21 +83,14 @@ public class BoyerMoore {
      * Builds the last occurrence table that will be used to run the Boyer Moore
      * algorithm.
      *
-     * Note that each char x will have an entry at table.get(x). Each entry should
-     * be the last index of x where x is a particular character in your pattern. If
-     * x is not in the pattern, then the table will not contain the key x, and you
-     * will have to check for that in your Boyer Moore implementation.
+     * Each character x has an entry at table.get(x). Each entry should be the last
+     * index of x where x is a particular character in the pattern. If x is not in
+     * the pattern, then the table will not contain the key x, and the main Boyer
+     * Moore method will check for that.
+     * 
+     * It is assumes that the passed in pattern is not null.
      *
-     * Ex. pattern = octocat
-     *
-     * table.get(o) = 3 table.get(c) = 4 table.get(t) = 6 table.get(a) = 5
-     * table.get(everything else) = null, which you will interpret in Boyer-Moore as
-     * -1
-     *
-     * If the pattern is empty, return an empty map. You may assume that the passed
-     * in pattern will not be null.
-     *
-     * @param pattern A pattern you are building last table for.
+     * @param pattern A pattern to build a last occurrence table for.
      * @return A Map with keys of all of the characters in the pattern mapping to
      *         their last occurrence in the pattern.
      */
