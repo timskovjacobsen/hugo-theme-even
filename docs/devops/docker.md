@@ -42,3 +42,23 @@ If the changes doesn't take effect, close all terminal windows. If they still do
 ```console
 sudo docker kill $(docker ps -q)
 ```
+
+## Commands
+
+* `RUN`
+  Images are created in layers. Each `RUN` command corresponds to a layer. It's good practice to keep as few layers as possible, within reason.
+  
+* `ENTRYPOINT`
+  Will always run when the container is created
+
+* `CMD`
+  Commands that will run when the container is created unless user overwrites the command
+  **TODO: Check if this is correct!**
+
+* `COPY`
+    Copies files from the host to the Docker containers. Only files can be copied.
+
+* `ADD`
+    Can take files, URLs or archives. Adding archives will auto-unpack them into the container.
+
+    > **Note:** Use `.dockerignore` to avoid unwanted files and directories being copied or added into the image.
