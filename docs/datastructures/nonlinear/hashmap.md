@@ -24,10 +24,10 @@ The $^*$ denotes *amortized* time complexity. Without resizing, the worst time c
 
 ## Hash Functions
 
-Hash Functions must be
+Hash Functions must
 
 * Map keys to integers, regardless of the data type of the key
-* Equal inputs must have equal hashes
+* Exhibit the feature that equal inputs must have equal hashes
 
 In mathematical terms, a Hash Function is written as
 
@@ -366,7 +366,7 @@ It should also be noted that even though both quadratic probing and double hashi
 
 * Java implements as HashMap with a variation of external chaining, where a chain is replaced by balanced BST if its length becomes too large. The load factor is 0.75.
 * Python's dictionary uses a variation of linear probing and a max load factor of $2/3$.
-* C++ uses external chaining with a max load factor of 1.0. Recall that the load factor can actually exceed 1.0 with external chaining as each index can have many entries.
+* C++ uses external chaining with a max load factor of $1.0$. Recall that the load factor can actually exceed 1.0 with external chaining as each index can have many entries.
 
 ## Hash Map Implementation
 

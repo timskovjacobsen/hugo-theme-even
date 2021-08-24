@@ -88,16 +88,4 @@ public class ExternalChainingMapEntry<K, V> {
         String v = this.value == null ? "null" : this.value.toString();
         return String.format("(%s, %s)", k, v);
     }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public boolean equals(Object o) {
-        // DO NOT USE THIS METHOD IN YOUR CODE! This is for testing ONLY!
-        if (!(o instanceof ExternalChainingMapEntry)) {
-            return false;
-        } else {
-            ExternalChainingMapEntry<K, V> that = (ExternalChainingMapEntry<K, V>) o;
-            return that.getKey().equals(key) && that.getValue().equals(value);
-        }
-    }
 }

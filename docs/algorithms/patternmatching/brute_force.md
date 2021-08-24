@@ -1,6 +1,6 @@
 # Brute force algorithm
 
-The brute force algorithm to pattern matching is the naive implementation. It's simple and intuitive, but naturally not very efficient.
+The brute force algorithm for pattern matching is a naive implementation. It's simple and intuitive, but naturally not very efficient.
 
 It checks every possible combination that can be a match, without using any "clever tricks" to skip parts of the text.
 

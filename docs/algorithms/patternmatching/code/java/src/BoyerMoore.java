@@ -49,7 +49,7 @@ public class BoyerMoore {
                 // match
                 matches.add(i);
 
-                // After the full match, shift the pattern naively by 1 and continue 
+                // After the full match, shift the pattern naively by 1 and continue
                 // searching. Note that we allow overlapping matches with this.
                 i++;
             } else {
@@ -61,17 +61,15 @@ public class BoyerMoore {
                 if (shift < j) {
                     // Shift the pattern to align the mismatched text character
                     // with the character in the pattern found in the last occurrence
-                    // table align. 
+                    // table align.
                     // If the character does not exist in the last occurrence
                     // table, then shift=-1. This will move the pattern all the way
                     // past the text character that was just mismatched
                     i = i + j - shift;
                 } else {
-                    // This can happen in two cases: 
-                    // - the character is not in the last occurrence table (shift = -1) 
-                    // - if the character did exist in the table, but the shift is 
-                    // backwards, which doesn't make sense.
-                    // So instead, we shift one forward
+                    // The character did exist in the last occurrence table, but the
+                    // shift is backwards, which doesn't make sense.
+                    // We shift one forward instead.
                     i++;
                 }
             }
@@ -88,7 +86,7 @@ public class BoyerMoore {
      * the pattern, then the table will not contain the key x, and the main Boyer
      * Moore method will check for that.
      * 
-     * It is assumes that the passed in pattern is not null.
+     * It is assumed that the passed in pattern is not null.
      *
      * @param pattern A pattern to build a last occurrence table for.
      * @return A Map with keys of all of the characters in the pattern mapping to

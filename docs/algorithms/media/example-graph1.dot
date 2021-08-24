@@ -1,0 +1,10 @@
+
+graph graphname { 
+        A--B;
+        B--C;
+        C--D;
+        D--E;
+        D--F;
+        B--H;
+        A--G;
+	}

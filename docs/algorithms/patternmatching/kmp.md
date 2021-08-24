@@ -46,32 +46,30 @@ The worst case comparison count for the failure table is $2m$ comparisons.
 
 ## Implementation
 
-!!! example "Failure table implementation"
+???+ example "Implementation"
 
-    ```python
-    def compute_failure_table(pattern: str) -> list:
-        m = len(pattern)
-        failure_table = [0 for _ in range(m)]
-        i, j = 0, 1
+    === "Java"
+        ```java linenums="1"
+        --8<--
+        docs/algorithms/patternmatching/code/java/src/KnuthMorrisPratt.java
+        --8<--
+        ```
 
-        while j < m:
-            if pattern[i] == pattern[j]:
-                failure_table[j] = i + 1
-                i += 1
-                j += 1
-            else if pattern[i] != pattern[j] and i == 0:t
-                failure_table[j] = 0
-                j += 1
-            else:
-                i = failure_table[i - 1]
-        
-        return failure_table
-    ```
+    === "Python"
+        ```python linenums="1"
+        --8<--
+        docs/algorithms/patternmatching/code/python/kmp_failure_table.py
+        --8<--
+        ```
 
 ## Algorithm
 
-* When a mismatch occurs, the failure table $f$ is queried for the *pattern index* $i$, i.e. we get f[i]$
-* When a mismatch occurs,we shift the pattern to get ready for a new match check with the text. The shift is done in a way so that all characters that matched before the mismatch will still match after the pattern shifts.
+* When a mismatch occurs, the failure table $f$ is queried for the *pattern index* $i$, i.e. we get $f[i]$.
+
+* When a mismatch occurs, we shift the pattern to get ready for a new match check with the text. The shift is done in a way so that all characters that matched before the mismatch will still match after the pattern shifts.
+
+    This part is quite important because it sets KMP apart from e.g. the Boyer-Moore algorithm.
+
 * The movement in the pattern while comparing to the text is **left-to-right**. This is in contract to Boyer-Moore, which compares in *reverse* order.
 
 The algorithm considers three cases
@@ -128,6 +126,8 @@ The worst case comparison count for the KMP algorithm is $2n$ comparisons.
             
     ```
 
+    **TODO: ADD JAVA IMPLEMENTATION!!!**
+
 ## Time complexity
 
 The table below shows the time complexity for the KMP algorithm.
@@ -137,7 +137,7 @@ The table below shows the time complexity for the KMP algorithm.
 | ----------- | ---------- | ---------- |
 | None        | $O(m + n)$ | $O(m + n)$ |
 | Single      | $O(m)$     | $O(m + n)$ |
-| All         | $O(m + n)$ | $O(m + n)  |
+| All         | $O(m + n)$ | $O(m + n)$ |
 
 </center>
 
@@ -145,7 +145,7 @@ The table below shows the time complexity for the KMP algorithm.
     * $O(m)$ for generating the failure table
     * $O(n)$ for traversing each character (at least) once
 
-Thus, the KMP algorithm is linear in the worst case and therefore more efficient than the Boyer-Moore algorithm.
+**Thus, the KMP algorithm is linear in the worst case and therefore more efficient than the Boyer-Moore algorithm.**
 
 The space complexity of the KMP algorithm is $O(m)$, which amounts to storing the failure table.
 We ignore the text and pattern strings when talking space complexity because they are only inputs and not something the algorithm produces.

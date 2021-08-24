@@ -40,7 +40,6 @@ public class ExternalChainingHashMap<K, V> {
      * differences between integer and double division when calculating load factor.
      *
      * When regrowing, resize the length of the backing table to (2 * old length) +
-     * 1. You should use the resizeBackingTable method to do so.
      *
      * @param key   The key to add.
      * @param value The value to add.

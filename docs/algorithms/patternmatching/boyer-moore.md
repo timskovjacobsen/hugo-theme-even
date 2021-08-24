@@ -29,11 +29,11 @@ The last occurrence table is produced by preprocessing the pattern. The table fo
 
     | Character | Index |
     | :-------: | :---: |
-    |    $h$    |  $0$   |
-    |    $a$    |  $1$   |
-    |    $p$    |  $3$   |
-    |    $y$    |  $4$   |
-    |    $*$    |  $-1$   |
+    |    $h$    |  $0$  |
+    |    $a$    |  $1$  |
+    |    $p$    |  $3$  |
+    |    $y$    |  $4$  |
+    |    $*$    | $-1$  |
 
     $*=-1$ represents characters that do not occur in the pattern.
 
@@ -42,10 +42,10 @@ The last occurrence table is produced by preprocessing the pattern. The table fo
 
     | Character | Index |
     | :-------: | :---: |
-    |    $a$    |  $10$   |
-    |    $b$    |  $11$   |
-    |    $c$    |   $9$   |
-    |    $d$    |  $-1$   |
+    |    $a$    | $10$  |
+    |    $b$    | $11$  |
+    |    $c$    |  $9$  |
+    |    $d$    | $-1$  |
 
     $d=-1$ since it does not occur in the pattern.
 
@@ -78,6 +78,12 @@ The worst case time complexity is $O(nm)$. If there is a mismatch at the first c
 
 </center>
 
+### Space complexity
+
+The space complexity of Boyer-Moore comes from storing the last occurrence table and is $O(\min(m, s))$. $m$ denotes the length of the pattern and $s$ the length of the alphabet. The last occurrence table can have size $m$ if all characters in the pattern are distinct. But if the alphabet is smaller than the pattern, it will be size $s$ instead since duplicates must be present then.
+
+Note that this doesn't include the space required for the pattern and the text, since those are inputs and already allocated before calling the algorithm.
+
 ## Counting comparisons
 
 !!! example
@@ -92,13 +98,50 @@ The worst case time complexity is $O(nm)$. If there is a mismatch at the first c
     Just like the brute force algorithm, we are only moving one letter down the text in each iteration in, resulting in $n-m+1$ shifts. The reason we are shifting only one each time is that we are mismatching on the first comparison each time until we hit the very last location the pattern can be placed in (comparing right-to-left).
   
     We subtract $m$ because we start by aligning the first character in the pattern by the first character in the text, thereby "saving" $m$ shifts initially.
-    
+
     * In each of the $n$ shifts, we are performing only a single comparison to realize that we can continue to the next character.
     * At the last character, we find the full match and perform $m$ comparisons.
 
     The number of comparisons made is
     $$ n_{\text{comparisons}} = n - m + m = n $$
     $$ n_{\text{comparisons}} = 41 $$
+
+## Diagramming
+
+![boyer-moore-diagramming-example](/algorithms/patternmatching/media/boyer-moore-diagramming.svg)
+
+The shift steps are explained below.
+
+1. Text character **a** mismatch with pattern character **b**.
+Character **a** appears in the last occurrence table with index $4$.
+Shift pattern so index $4$ aligns with the mismatched text character **a**.
+
+2. Text character **a** mismatch with pattern character **c**.
+Character **a** appears in the last occurrence table with index $4$.
+Shifting the pattern so index $4$ aligns with the mismatched text character **a** would shift the pattern backward. This does not make sense, so all we can do is shift the pattern by $1$.
+
+3. Text character **a** mismatch with pattern character **b**.
+Character **a** appears in the last occurrence table with index $4$.
+Shift pattern so index $4$ aligns with the mismatched text character **a**.
+
+4. Text character **d** mismatch with pattern character **b**.
+Character **d** does not appear in the last occurrence table.
+We can therefore shift the entire pattern past this mismatch.
+
+5. Text character **a** mismatch with pattern character **b**.
+Character **a** appears in the last occurrence table with index $4$.
+Shift pattern so index $4$ aligns with the mismatched text character **a**.
+
+6. All characters match, i.e. we have a full match. Shift the pattern naively by $1$.
+
+7. Same scenario as for comparison $7$. Align pattern's index $4$ with the mismatched text character **a**.
+
+8. Same scenario as above.
+
+9. Exact same scenario as for comparisons $2$, $3$ and $4$. Shift pattern by $1$.
+
+10. Text character **b** mismatch with pattern character **a**. We reached
+the end of the text so we are done.
 
 ## Implementation
 

@@ -85,8 +85,8 @@ Fibonacci is a good example for demonstrating dynamic programming as we it solve
 
 In solving Fibonacci without dynamic programming, the same calculation is done multiple times. Consider `fib(5)`, where we are calculating `fib(1)`, `fib(2)`, `fib(2)` are calculated multiple times. Note that the function name has been abbreviated to `f()`.
 
-                        f(5)
-                        /    \
+                      f(5)
+                     /    \
                 f(4)        f(3)
                 /  \         /   \
             f(3)  f(2)      f(2) f(1)

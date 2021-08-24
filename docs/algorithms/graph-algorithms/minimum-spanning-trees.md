@@ -65,9 +65,11 @@ The algorithm can be broken down like this:
 
 4. As long as $VS$ doesn't contain all vertices in the graph *or* $PQ$ still has items
     * Dequeue the next vertex from $PQ$
-    * If $S$ is not in 
+    * If $S$ is not in
 
-**TODO: ADD Implementation!!!**
+!!! example "Implementation"
+
+    **TODO: ADD Implementation!!!**
 
 ### Time Complexity
 
@@ -82,9 +84,9 @@ $$
 where $|E|$ denotes the *order* of the edge set, i.e. the number of edges.
 
 !!! note
-    The time complexity of $O(|E| \log |E|)$ is assuming that the Priority Queue backed by a binary heap does not implement the [`decreaseKey()` TODO: LINK TO DECREASE-KEY DEFINTION FROM DIJKSTRA'S](blabla) operation.
+    The time complexity of $O(|E| \log |E|)$ is assuming that the Priority Queue is backed by a binary heap does not implement the [`decreaseKey()` TODO: LINK TO DECREASE-KEY DEFINTION FROM DIJKSTRA'S](blabla) operation.
 
-    The time complexity would instead be $O(\log |V| (|V| + |E|)))$ had the `decreaseKey()` operation been implemented.
+    The time complexity would instead be $O((|V| + |E|) \log |V|)$ had the `decreaseKey()` operation been implemented.
 
     Note that Java's Priority Queue does not implement the `decreaseKey()` operation.
 
@@ -141,12 +143,12 @@ If the tree (subgraph) on which we run a `find()` operation is degenerate, we ha
 
 Path compression can be utilized to decrease the time complexity to $O(1)$. We first realize that in this framework, the only thing that matters for the `find()` operation is the root of the tree, which serves as the figurehead or name of the cluster. When we use `find(x)`, the only thing we care about is finding the root that `x` is tied to. Therefore, we can change the pointer for each node to instead point at the root instead and thereby make all `find()` operations constant.
 
-!!! example
+!!! example "Path compression example"
     A degenerate tree is a linear tree, essentially a linked list.
 
     Degenerate tree with G as root:
 
-        G → E → Y → P → R → W
+        G <- E <- Y <- P <- R <- W
 
     Path compressed tree with G as root:
 
@@ -168,6 +170,17 @@ Path compression can be implemented by use of pointer reinforcement, which is a 
 
 A Minimum Spanning Forest (MSF) consists of multiple Minimum Spanning Trees. There can be produced from disconnected graphs by algorithms such as Kruskal's.
 
-* For an MSF, the number of edges is $|V| - c$, where $c$ is the number of disconnected subgraphs. Consider a disconnected graph with $8$ total vertices and three subgraphs. The MSF will contain $8-3=5$ edges.
+* For an MSF, the number of edges is $|V| - c$, where $c$ is the number of disconnected subgraphs. Consider a disconnected graph with $8$ total vertices and three subgraphs.  
+The MSF will contain $8-3=5$ edges.
 
 * In case of a disconnected graph, Kruskal's algorithm will consider all edges before it finds out that the graph is disconnected.
+
+### Examples of Kruskal's algorithm
+
+**TODO: Example from practice exam where edge BH needs to be added even though both B and H already have edges connected to them, but no cycle is present. Failing to add edge BH to the MST will leave two disconnected spanning trees.**
+
+To find the MST from looking at the graph:
+
+* The next edge to add is always the edge with the smallest weight, provided that the addition of the edge does not produce a cycle.
+
+* Continue this until an MST is formed. A valid MST will always have $|V| - 1$ edges.
