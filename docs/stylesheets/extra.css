@@ -12,7 +12,6 @@ h4 {
 h1 {
     font-weight: 900 !important;
     text-align: center;
-    color: #a12828 !important;
     border-bottom: 1px solid;
     margin-bottom: 15px !important;
 }
@@ -23,9 +22,6 @@ h2 {
     /* color: #a12828 !important; */
 }
 
-/* h3 { */
-    /* color: #a12828 !important; */
-/* } */
 
 .md-typeset h2, h3, h4 {
     font-weight: 900 !important;
@@ -53,9 +49,9 @@ td > code,
 ul > code,
 li > code {
     /* color: #a12828; */
-    border: 1px solid #dee2e6;
-    font-size: 11px;
-    color: #E74C3C !important;
+    border: 1px solid none;
+    /* font-size: 11px; */
+    /* color: #c05b4d !important; */
 }
 
 th {
@@ -85,13 +81,14 @@ th {
     padding-bottom: 5px !important;
 }
 
-svg, img {
+div > svg, img {
     border-radius: 2px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 10px;
 }
 
 .md-typeset li::marker {
-    color: #2727276c;
+    color: #c05b4d;
 }
 
 figure {
@@ -113,7 +110,7 @@ figure {
 }
 
 :root {
-    --md-primary-fg-color: #a12828;
-    --md-primary-fg-color--light: #a12828;
-    --md-primary-fg-color--dark: #a12828;
+    --md-primary-fg-color: #872727;
+    --md-primary-fg-color--light: #872727;
+    --md-primary-fg-color--dark: #872727;
 }
