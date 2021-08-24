@@ -1,0 +1,14 @@
+
+graph graphname { 
+        A--B [label="4"];
+        B--C [label="2"];
+        C--D [label="7"];
+        C--E [label="8"];
+        C--G [label="0"];
+        D--E [label="5"];
+        D--F [label="6"];
+        D--H [label="6"];
+        F--G [label="3"];
+        B--H [label="4"];
+        A--G [label="3"];
+	}
