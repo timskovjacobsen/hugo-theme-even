@@ -6,7 +6,7 @@
 To find all files with the extension `.rfa` recursively from current directory:
 
 ```bash
-find . -type f -name "*.rfa" -print
+find . -name "*.rfa"
 ```
 
 ## grep
