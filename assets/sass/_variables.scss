@@ -66,12 +66,12 @@ $global-background: $white !default;
 
 // Headings font size of the site.
 $global-headings: (
-  h1: 36px,
-  h2: 32px,
-  h3: 28px,
-  h4: 24px,
+  h1: 32px,
+  h2: 28px,
+  h3: 24px,
+  h4: 22px,
   h5: 20px,
-  h6: 16px
+  h6: 18px
 ) !default;
 
 
@@ -122,7 +122,7 @@ $post-padding: 1.5em 0 !default;
 $post-border: 1px solid $light-gray !default;
 
 // Font size of post title.
-$post-title-font-size: 36px !default;
+$post-title-font-size: 32px !default;
 
 // Font weight of post title.
 $post-title-font-weight: 600 !default;
