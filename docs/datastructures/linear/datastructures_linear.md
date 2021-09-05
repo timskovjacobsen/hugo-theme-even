@@ -20,7 +20,7 @@
 Arrays are fixed-length data structures that hold multiple entities of the same type as its elements. The elements are retrieved by using their index in the array.
 
 - An array is statically allocated to a contiguous block of memory, i.e. the elements must be next to each other in memory.  
-  Data can be stored any location within the allocated memory, it does not have to be contiguous.
+  Data can be stored in any location within the allocated memory, it does not have to be contiguous.
 
 - At creation, the size must be specified and remains constant. If an array has length $n$, then adding an element at index $n+1$ is not possible without creating a new array with increased allocated memory. This operation involves copying all elements from the previous array, and is therefore costly.  
   This is the biggest drawback of Arrays.

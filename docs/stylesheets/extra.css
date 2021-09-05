@@ -59,12 +59,6 @@ th {
     min-width: 3em !important;
 }
 
-/* Code blocks */
-.highlight {
-    background-color: hsla(0, 0%, 96%, 1) !important;
-}
-
-
 .md-typeset .admonition {
     font-size: 0.9em;
 }
@@ -81,7 +75,7 @@ th {
     padding-bottom: 5px !important;
 }
 
-div > svg, img {
+div > p > svg, img {
     border-radius: 2px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     padding: 10px;
