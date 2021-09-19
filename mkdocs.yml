@@ -54,6 +54,9 @@ nav:
           - Structs: languages/C/structs.md
           - Pointers: languages/C/pointers.md
           - Arrays: languages/C/arrays.md
+          - Strings: languages/C/strings.md
+          - Functions: languages/C/functions.md
+          - Building Projects: languages/C/building-projects.md
   - Linux:
       - Bash: linux/bash.md
   - DevOps:
@@ -96,7 +99,8 @@ theme:
     # text: Palatino Linotype
     text: Raleway
     # code: Cascadia Code PL
-    code: FiraCode Nerd Font Mono
+    # code: FiraCode Nerd Font Mono
+    code: Fira Code
     # code: Ubuntu Mono
 
 extra_css:
