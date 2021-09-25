@@ -5,7 +5,28 @@ In the C programming language, a *pointer* is a variable whose value is the memo
 !!! tip
     In the C programming language, a *pointer* is a variable whose value is the memory address of another variable.
 
+## Memory addresses
+
+We can reference a memory address of a variable `a` in C by
+
+```c
+a = 12;
+printf("memory address of a = %d\n", &a);
+```
+
+Prints
+
+    memory address of a = 0x7ffcebe82e34
+
+The memory address might not be the same on other machines or in subsequent runs.
+
 ## Pointer basics
+
+A pointer is creates with the `*` character.
+
+```c
+
+```
 
 ??? example
     ```c
@@ -125,8 +146,8 @@ The table below gives an overview of the syntax and what can be changed for the 
 
 ## Pointer arithmetics
 
-Recall that a pointer is a variable with value equal to another variable's memory address. Everything in a computer is represented as a number. Memory addresses are normally referred to in *hex*, i.e. base 16.
-Therefor, it's possible to perform arithmetic with pointers, just like with other types like integers and floats.
+Recall that a pointer is a variable with value equal to another variable's memory address. Everything in a computer is represented as a number. Memory addresses are normally referred to in *hex*, i.e. base $16$.
+Therefore, it's possible to perform arithmetic with pointers, just like with other types like integers and floats.
 
 We do arithmetics with pointers based on the underlying type of the pointer. Incrementing will increase the pointer's value by an amount equal to the number of bytes that the particular type occupies in memory. Note that we are working with bytes, not bits here.
 
@@ -136,3 +157,37 @@ More generally, when adding the integer $k$ to a pointer of type `T`, the compil
 
 !!! note
     The compiler takes care of most of this for us! **IS THIS CORRECT?**
+
+## Pointer pitfalls
+
+### Dangling pointers
+
+A *dangling pointer* is a pointer to a memory location which does not exist anymore.
+
+Say that a pointer
+
+```c linenums="1" hl_lines="11-12"
+int * create_array(int n){
+    // Initialize the array with n elements
+    int arr[n];
+
+    // Fill in the array with zeros
+    for (int i; i < n; i++) {
+        arr[i] = 0;
+    }
+
+    // Return the array (pointer to first element's memory location)
+    // BUG: Don't do this, the local variable `arr` is destroyed 
+    //      after this function terminates.
+    return arr;
+}
+```
+
+A function always has a stack frame assigned to it. Any local variables defined in the function lives in that stack frame.
+
+After the function terminates, the frame is destroyed and the memory locations where the local variables are stored get freed up for later use.
+
+!!! danger "Don't return pointers to local variables"
+    If we return a pointer to a local variable, it will become a *dangling pointer* since the memory address it points to is not associated with that local variable anymore.
+
+The way to correctly return local variables is to allocate memory for it with `malloc`. It will make the memory locations persist across function calls.
