@@ -1,5 +1,30 @@
 # Docker
 
+## Docker nomenclature
+
+### Image vs. container
+
+Quick Docker nomenclature:
+
+* **Image**  
+  An image is a template for creating docker containers. Images are defined as code in a `Dockerfile`.
+
+* **Container**  
+  A container is an image Is like a recipe
+
+Here are some analogies to clear up the difference between an **image** and a **container**:
+
+* If an **image** is a food recipe, a **container** is the actual dish made from it.
+
+    We only need one recipe to create many identical dishes. Our recipe is the `Dockerfile`.
+
+* If an **image** is a class in Object-Oriented Programming, a **container** is the instance of that class.
+
+    The code defining the class with attributes, methods etc. is a template that's equivalent to the `Dockerfile`. When we create an instance of the class based on that template, we have the equivalent of a container.
+
+* If an **image** is a [cookie cutter](https://en.wikipedia.org/wiki/Cookie_cutter), a **container** is a cookie.
+
+
 ## Docker as non-root linux user
 
 On linux, running Docker in the default configuration after install needs to be done as a superuser. That is with `sudo` in front of all docker commands.
@@ -62,3 +87,5 @@ sudo docker kill $(docker ps -q)
     Can take files, URLs or archives. Adding archives will auto-unpack them into the container.
 
     > **Note:** Use `.dockerignore` to avoid unwanted files and directories being copied or added into the image.
+
+

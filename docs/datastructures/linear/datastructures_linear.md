@@ -27,10 +27,10 @@ Arrays are fixed-length data structures that hold multiple entities of the same 
 
 - One of the most useful characteristics of arrays is fast access to an element at an index, which takes constant time.
 
-  - Since all elements are of the same type, they take up the same amount of bits in memory.
+    - Since all elements are of the same type, they take up the same amount of bits in memory.
 
-  - If the memory address for index 0 is known, then an elements at index $i$ can be retrieved by three simple arithmetic operations:
-    $$ \mathrm{index_i \ address} = \mathrm{index_0 \ address} + i \cdot \mathrm{type \ size} $$
+    - If the memory address for index $0$ is known, then an elements at index $i$ can be retrieved by three simple arithmetic operations:
+    $$ \mathrm{address(index_i)} = \mathrm{address(index_0)} + i \cdot \mathrm{size\\_of(type)} $$
 
   This makes accessing indices in arrays a constant time operation, i.e. $O(n)$.
 
