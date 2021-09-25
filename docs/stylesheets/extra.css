@@ -48,10 +48,10 @@ tr > code,
 td > code,
 ul > code,
 li > code {
-    /* color: #a12828; */
+    color: #c7254e;
+    /* background-color: transparent; */
     border: 1px solid none;
     /* font-size: 11px; */
-    /* color: #c05b4d !important; */
 }
 
 th {
