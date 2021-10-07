@@ -56,10 +56,10 @@ $global-lineheight: 1.5 !default;
 
 // Font family of the site.
 // $global-font-family: 'Merriweather Sans', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif !default;
-$global-font-family: 'Fira Sans', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif !default;
+$global-font-family: 'Rosario', 'Fira Sans', 'Source Sans Pro', 'Helvetica Neue', sans-serif !default;
 
 // Serif font family of the site.
-$global-serif-font-family: 'Crimson Text', Athelas, STHeiti, Microsoft Yahei, serif !default;
+$global-serif-font-family: 'Rosario', 'Crimson Text', Athelas, STHeiti, Microsoft Yahei, serif !default;
 
 // Background color of the site.
 $global-background: $white !default;
@@ -92,6 +92,9 @@ $header-padding: 20px 20px !default;
   font-style: normal;
   font-display: swap;
 }
+
+// Font family: Rosario
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Rosario:wght@300&display=swap');
 
 // Font size of the logo.
 $logo-font-size: 22px !default;
